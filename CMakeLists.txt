@@ -30,7 +30,7 @@ target_include_directories(mipt_formal_regular PUBLIC ${PROJECT_SOURCE_DIR}/incl
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/Test)
 
-#setup_target_for_coverage(tests mipt_formal_regular coverage)
+#setup_target_for_coverage(tests ${PROJECT_SOURCE_DIR}/bin/Test coverage)
 #
 #
 #enable_testing()
