@@ -1,0 +1,8 @@
+Сборка проекта:
+1) Скачать репозиторий, перейти на ветку branch
+2) в терминале сделать:
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Debug ..	 
+make
+make tests
