@@ -10,10 +10,19 @@ class MockRegular : public RegularParse {
 public:
     MockRegular() : RegularParse() {};
     MockRegular(const MockRegular& other) : RegularParse(other) {};
-    MockRegular(MockRegular&& other) noexcept : RegularParse(other) {};
+    MockRegular(MockRegular&& other) noexcept : RegularParse(std::move(other)) {};
     explicit MockRegular(std::string& regular, char letter, int count) : RegularParse(regular, letter, count) {};
-    std::stack<std::unordered_map<int, int>> GetBuffer() {
+    std::stack<std::unordered_map<int, int>> GetBuffer() const {
         return buffer_regular_;
+    }
+    std::string GetReg() const {
+        return regular_expression_;
+    }
+    char GetLetter() const {
+        return letter_for_find_;
+    }
+    int GetCount() const {
+        return count_letter_;
     }
     void SetBuffer(std::stack<std::unordered_map<int, int>>& buff) {
         buffer_regular_ = buff;
@@ -60,7 +69,7 @@ private:
 class TestRegular : public ::testing::Test {
 public:
     MockRegular moc_reg;
-    std::string regular = "ab.*";
+    MockRegular mock_reg_second;
 private:
 
 };

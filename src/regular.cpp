@@ -65,28 +65,6 @@ int UnaryOperationRegular::FindMin(int index, bool& flag_find) {
     return min_res;
 }
 
-RegularParse& RegularParse::operator=(RegularParse&& other) noexcept {
-    if (this != &other) {
-        regular_expression_ = std::move(other.regular_expression_);
-        letter_for_find_ = other.letter_for_find_;
-        count_letter_ = other.count_letter_;
-        buffer_regular_ = std::move(other.buffer_regular_);
-        other.letter_for_find_ = ' ';
-        other.count_letter_ = 0;
-    }
-    return *this;
-}
-
-RegularParse& RegularParse::operator=(const RegularParse& other) {
-    if (this != &other) {
-        regular_expression_ = other.regular_expression_;
-        letter_for_find_ = other.letter_for_find_;
-        count_letter_ = other.count_letter_;
-        buffer_regular_ = other.buffer_regular_;
-    }
-    return *this;
-}
-
 std::istream& operator>>(std::istream& in, RegularParse& regular_expression) {
     in >> regular_expression.regular_expression_;
     in >> regular_expression.letter_for_find_;

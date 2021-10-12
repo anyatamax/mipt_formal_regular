@@ -50,8 +50,6 @@ public:
     RegularParse(RegularParse&& other) noexcept = default;
     explicit RegularParse(std::string& regular, char letter, int count) :
     regular_expression_(regular), letter_for_find_(letter), count_letter_(count) {};
-    RegularParse& operator=(RegularParse&& other) noexcept;
-    RegularParse& operator=(const RegularParse& other);
     friend std::istream& operator>>(std::istream& in, RegularParse& regular_expression);
     friend std::ostream& operator<<(std::ostream& out, const RegularParse& regular_expression);
     std::string ParsingRegular();

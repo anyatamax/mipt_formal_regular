@@ -1,6 +1,24 @@
 #include "test_regular.h"
 #include <sstream>
 
+TEST_F(TestRegular, ConstructorsAssigments) {
+    std::string str = "abc..*";
+    MockRegular str_first(str, 'b', 2);
+    moc_reg.SetRegular(str);
+    moc_reg.SetLetterAndCount('b', 2);
+    EXPECT_EQ(str_first.GetCount(), moc_reg.GetCount());
+    EXPECT_EQ(str_first.GetLetter(), moc_reg.GetLetter());
+    EXPECT_EQ(str_first.GetReg(), moc_reg.GetReg());
+    MockRegular str_second(moc_reg);
+    EXPECT_EQ(str_second.GetCount(), moc_reg.GetCount());
+    EXPECT_EQ(str_second.GetLetter(), moc_reg.GetLetter());
+    EXPECT_EQ(str_second.GetReg(), moc_reg.GetReg());
+    MockRegular str_third(std::move(moc_reg));
+    EXPECT_EQ(str_third.GetCount(), 2);
+    EXPECT_EQ(str_third.GetLetter(), 'b');
+    EXPECT_EQ(str_third.GetReg(), "abc..*");
+}
+
 TEST_F(TestRegular, Letter) {
     moc_reg.SetLetterAndCount('b', 2);
     std::unordered_map<int, int> map;
@@ -159,7 +177,7 @@ TEST_F(TestRegular, TestParsingBased) {
     }
 }
 
-TEST_F(TestRegular, Based) {
+TEST_F(TestRegular, Stream) {
     std::stringstream str;
     str << "abb..* b 2";
     str >> moc_reg;
