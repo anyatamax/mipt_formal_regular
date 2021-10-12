@@ -29,8 +29,9 @@ target_link_libraries(mipt_formal_regular Library)
 target_include_directories(mipt_formal_regular PUBLIC ${PROJECT_SOURCE_DIR}/include)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/Test)
-setup_target_for_coverage(tests Test coverage)
 
-enable_testing()
-add_test(Test0 ${PROJECT_SOURCE_DIR}/bin/Test)
-
+#setup_target_for_coverage(tests mipt_formal_regular coverage)
+#
+#
+#enable_testing()
+#add_test(Test0 ${PROJECT_SOURCE_DIR}/bin/Test)
