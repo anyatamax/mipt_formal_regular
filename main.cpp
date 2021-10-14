@@ -2,8 +2,8 @@
 #include "include/regular.h"
 
 int main() {
-    std::string reg_s = "ab+c.aba.*.bac.+.+*";
-    RegularParse reg(reg_s, 'b', 2);
-    std::cout << reg.ParsingRegular();
+    RegularParse regular_expression;
+    std::cin >> regular_expression;
+    std::cout << regular_expression;
     return 0;
 }
