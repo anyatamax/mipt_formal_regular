@@ -6,3 +6,9 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Debug ..	 
 make
 make tests
+
+Запуск алгоритма:
+Перейти в главную папку проекта mipt_formal_regular
+Выполнить:
+./bin/mipt_formal_regular
+И ввести данные
